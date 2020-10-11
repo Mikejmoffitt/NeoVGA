@@ -1,0 +1,25 @@
+NeoVGA
+======
+
+Overview
+--------
+This is the VHDL source of my old NeoVGA project, which samples Neo-Geo pixel data before the DAC, and produces a line-doubled 480p image.
+
+Code quality and status
+-----------------------
+I wrote this when I was a student, learning some VHDL for a class. I do not do much synthesis work now, but if I did, I would likely teach myself Verilog and go from there.
+
+This project works, and can maybe be useful to somebody. However, please be mindful that the code quality is likely fairly poor when compared to that of somebody with more experience. Do not use this as a reference for best practices.
+
+This project was synthesized for an Altera EP2C5T144C6N FPGA, but can likely fit on just about anything with enough block RAM for the two line buffers.
+
+Possible Improvements
+---------------------
+Looking back, a few things could be improved.
+
+It would be nice to allow for the scanout to operate in a separate clock domain, optionally, so that some degree of width control could be realized.
+The RGB2YUV should use proper arithmetic, instead of my solving for coefficients as sums of bit-twiddling logic, to allow for flexibiltity.
+The RGB2YUV module should have an optional stage of delay for the luma output, as many monitors have a little delay on the chroma lines.
+Symbol names across the board should be more consistent and readable.
+The raster and blanking timings should be generalized, so that this is more reasily adapted to other systems with a readily available digital pixel bus.
+
